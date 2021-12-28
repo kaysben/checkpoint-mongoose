@@ -1,5 +1,5 @@
 const express=require("express")
-const { AddContact, Getcontact, getOneContact, DeleteContact } = require("../controllers/contact")
+const { AddContact, Getcontact, getOneContact, DeleteContact, updateContact } = require("../controllers/contact")
 const ContactSchema = require("../models/contact")
 
 const ContactRoute=express.Router()
@@ -104,16 +104,16 @@ ContactRoute.post("/addcontact",AddContact)
       // Method put
       // req.paramas  req.body
       //  /updateContact/:id
-      ContactRoute.put("/updateContact/:id",
-      async(req,res)=>{
-          const {id}=req.params
-          try {
-              const updated= await ContactSchema.findByIdAndUpdate(id,  {$set:{...req.body}})
-              res.status(200).send({msg:"contact updated",updated})
-          } catch (error) {
-              res.status(500).send({msg:"could not update contact"})
-          }
-      })
+      ContactRoute.put("/updateContact/:id",updateContact)
+      // async(req,res)=>{
+      //     const {id}=req.params
+      //     try {
+      //         const updated= await ContactSchema.findByIdAndUpdate(id,  {$set:{...req.body}})
+      //         res.status(200).send({msg:"contact updated",updated})
+      //     } catch (error) {
+      //         res.status(500).send({msg:"could not update contact"})
+      //     }
+      // })
 
 
 

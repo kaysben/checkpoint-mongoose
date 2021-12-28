@@ -47,12 +47,12 @@ exports.DeleteContact=async(req,res)=>{
 }
 
 
-// exports.updateContact=async(req,res)=>{
-//     const {id}=req.params
-//     try {
-//         const updated= await ContactSchema.findByIdAndUpdate(id,  {$set:{...req.body}})
-//         res.status(200).send({msg:"contact updated",updated})
-//     } catch (error) {
-//         res.status(500).send({msg:"could not update contact"})
-//     }
-// }
+ exports.updateContact= async(req,res)=>{
+          const {id}=req.params
+          try {
+              const updated= await ContactSchema.findByIdAndUpdate(id,  {$set:{...req.body}})
+              res.status(200).send({msg:"contact updated",updated})
+          } catch (error) {
+              res.status(500).send({msg:"could not update contact"})
+          }
+      }
